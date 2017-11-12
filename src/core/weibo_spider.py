@@ -28,7 +28,7 @@ if (len(sys.argv) & gt;=2):
 
 else:
 
-    user_id = (int)(raw_input(u"请输入user_id: "))
+    user_id = (int)(raw_input(u"???user_id: "))
 
 cookie = {"Cookie": "#your cookie"}
 
@@ -48,17 +48,17 @@ word_count = 1
 
 image_count = 1
 
-print u'爬虫准备就绪...'
+print u'??????...'
 
 for page in range(1, pageNum + 1):
 
-    # 获取lxml页面
+    # ??lxml??
 
     url = 'http://weibo.cn/u/%d?filter=1&amp;page=%d' % (user_id, page)
 
     lxml = requests.get(url, cookies=cookie).content
 
-    # 文字爬取
+    # ????
 
     selector = etree.HTML(lxml)
 
@@ -80,7 +80,7 @@ for page in range(1, pageNum + 1):
 
         word_count += 1
 
-    # 图片爬取
+    # ????
 
     soup = BeautifulSoup(lxml, "lxml")
 
@@ -99,7 +99,7 @@ fo.write(result)
 
 word_path = os.getcwd() + '/%d' % user_id
 
-print u'文字微博爬取完毕'
+print u'????????'
 
 link = ""
 
@@ -110,15 +110,15 @@ for eachlink in urllist_set:
 
 fo2.write(link)
 
-print u'图片链接爬取完毕'
+print u'????????'
 
 if not urllist_set:
 
-    print u'该页面中不存在图片'
+    print u'?????????'
 
 else:
 
-    # 下载图片,保存在当前目录的pythonimg文件夹下
+    # ????,????????pythonimg????
 
     image_path = os.getcwd() + '/weibo_image'
 
@@ -131,7 +131,7 @@ else:
 
         temp = image_path + '/%s.jpg' % x
 
-        print u'正在下载第%s张图片' % x
+        print u'?????%s???' % x
 
         try:
 
@@ -139,10 +139,10 @@ else:
 
         except:
 
-            print u"该图片下载失败:%s" % imgurl
+            print u"???????:%s" % imgurl
 
         x += 1
 
-print u'原创微博爬取完毕，共%d条，保存路径%s' % (word_count - 4, word_path)
+print u'??????????%d??????%s' % (word_count - 4, word_path)
 
-print u'微博图片爬取完毕，共%d张，保存路径%s' % (image_count - 1, image_path)
+print u'??????????%d??????%s' % (image_count - 1, image_path)
